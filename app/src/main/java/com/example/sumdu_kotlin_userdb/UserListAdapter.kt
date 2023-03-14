@@ -30,7 +30,7 @@ class UserListAdapter(private val userList: List<User>) : RecyclerView.Adapter<U
         // Bind the user data to the views in the view holder
         val user = userList[position]
         holder.idTextView.text = user.id.toString()
-        holder.nameTextView.text = "${user.firstName} +  + ${user.lastName}"
+        holder.nameTextView.text = "${user.firstName} ${user.lastName}"
         holder.phoneTextView.text = user.phoneNumber
         holder.emailTextView.text = user.emailAddress
         holder.addressTextView.text = user.homeAddress

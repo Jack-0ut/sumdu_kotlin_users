@@ -20,29 +20,12 @@ class UserListFragment : Fragment() {
         binding = FragmentUserListBinding.inflate(inflater, container, false)
         dbHelper = UserDatabaseHelper.getInstance(requireContext())
 
-        // here we set the data which should be shown
-        adapter = UserListAdapter(dummyGetUser())
+        // here we set the data which should be shown from the db
+        adapter = UserListAdapter(dbHelper.getAllUsers())
         binding.userRecyclerView.adapter = adapter
         binding.userRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         return binding.root
     }
-    fun dummyGetUser(): List<User> {
-        val userList = mutableListOf<User>()
-        for (i in 1..5) {
-            val user = User(
-                id = i,
-                firstName = "User $i",
-                lastName = "Lastname $i",
-                phoneNumber = "123-456-789$i",
-                emailAddress = "user$i@example.com",
-                homeAddress = "1234 Main St, Anytown, USA",
-                photo = ByteArray(0) // Empty byte array for now
-            )
-            userList.add(user)
-        }
-        return userList
-    }
-
 }
 
