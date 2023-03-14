@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.sumdu_kotlin_userdb.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var db: UserDatabaseHelper
+    private var currentSortOrder = "ID"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonAdd.setOnClickListener {
             val intent = Intent(this, AddUser::class.java)
             startActivity(intent)
+
         }
 
         // delete from Users table with given index
@@ -67,6 +71,12 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
+    // do refresh the list, when the spinner option is choosen
+    private fun refreshUserList() {
+        val userList = db.getAllUsers()
+        val userRecyclerView = findViewById<RecyclerView>(R.id.userRecyclerView)
+        userRecyclerView.layoutManager = LinearLayoutManager(this)
+        val userListAdapter = UserListAdapter(userList)
+        userRecyclerView.adapter = userListAdapter
+    }
 }
-

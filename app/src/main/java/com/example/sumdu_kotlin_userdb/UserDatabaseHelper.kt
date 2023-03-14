@@ -92,6 +92,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
 
     @SuppressLint("Range")
     fun getAllUsers(): List<User> {
+
         val userList = mutableListOf<User>()
         val selectQuery = "SELECT * FROM $TABLE_NAME"
         val db = this.readableDatabase
@@ -137,6 +138,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
         db.update(TABLE_NAME, values, "ID=?", arrayOf(id.toString()))
         db.close()
     }
+    /*
     fun getUsersSortedByFirstName(): List<User> {
         return getAllUsers().sortedBy { it.firstName }
     }
@@ -146,7 +148,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
     fun getUsersSortedByEmailAddress():List<User>{
         return getAllUsers().sortedBy { it.phoneNumber }
     }
-
+    */
     // Listeners to track the changes in the database
     fun setOnDatabaseChangeListener(listener: OnDatabaseChangeListener?) {
         onDatabaseChangeListener = listener

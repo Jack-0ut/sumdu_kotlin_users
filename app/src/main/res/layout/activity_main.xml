@@ -44,15 +44,15 @@ tools:context=".MainActivity">
     android:layout_toEndOf="@id/buttonEdit"
     android:text="Delete" />
 
-<Button
-    android:id="@+id/buttonAdd"
-    android:layout_width="160dp"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/textViewIdLabel"
-    android:layout_alignParentStart="true"
-    android:layout_marginStart="23dp"
-    android:layout_marginTop="71dp"
-    android:text="Add New User" />
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewIdLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="71dp"
+        android:text="Add New User" />
 
 <Button
     android:id="@+id/buttonClear"
@@ -63,21 +63,32 @@ tools:context=".MainActivity">
     android:layout_marginTop="72dp"
     android:text="Clear" />
 
-<Button
-    android:id="@+id/buttonShowList"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Show List"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@+id/buttonClear"
-    android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/buttonShowList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonClear"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/spinnerSortBy"
+        android:text="Show List" />
 
-<FrameLayout
-    android:id="@+id/fragment_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/buttonShowList"
-    android:layout_marginTop="20dp" />
+    <Spinner
+        android:id="@+id/spinnerSortBy"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonAdd"
+        android:layout_gravity="end"
+        android:layout_marginTop="24dp"
+        android:entries="@array/sort_by_options"
+        android:minHeight="48dp" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/buttonShowList"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>
 

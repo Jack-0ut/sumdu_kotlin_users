@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Users Database</string>
     <string name="sorting">Order By</string>
-    <string-array name="sort_options">
-        <item>First Name</item>
-        <item>Last Name</item>
-        <item>Email Address</item>
+    <string-array name="sort_by_options">
+        <item>Sort by First Name</item>
+        <item>Sort by Last Name</item>
+        <item>Sort by Email</item>
     </string-array>
 </resources>
