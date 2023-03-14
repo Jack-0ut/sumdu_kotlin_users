@@ -9,6 +9,15 @@ data class User(
     val homeAddress: String,
     val photo: ByteArray
 ) {
+    constructor(
+        id: Int,
+        firstName: String,
+        lastName: String,
+        phoneNumber: String,
+        emailAddress: String,
+        homeAddress: String
+    ) : this(id, firstName, lastName, phoneNumber, emailAddress, homeAddress, ByteArray(0))
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -34,4 +43,5 @@ data class User(
         result = 31 * result + homeAddress.hashCode()
         return result
     }
+
 }
