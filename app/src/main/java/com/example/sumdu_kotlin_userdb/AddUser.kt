@@ -23,6 +23,12 @@ class AddUser : AppCompatActivity() {
 
         binding.buttonSave.setOnClickListener {
             if (validateInput()) {
+                val imageByteArray = selectedImageUri?.let { uri ->
+                    val inputStream = contentResolver.openInputStream(uri)
+                    val byteArray = inputStream?.readBytes()
+                    inputStream?.close()
+                    byteArray
+                }
                 db.insertData(
                     this,
                     binding.editTextFirstName.text.toString(),
@@ -30,11 +36,16 @@ class AddUser : AppCompatActivity() {
                     binding.editTextPhoneNumber.text.toString(),
                     binding.editTextEmailAddress.text.toString(),
                     binding.editTextHomeAddress.text.toString(),
-                    selectedImageUri
+                    imageByteArray
                 )
-                Toast.makeText(this, "The data has been added successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "The data has been added successfully!", Toast.LENGTH_SHORT)
+                    .show()
             } else {
-                Toast.makeText(this, "Please fill all fields and choose a photo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Please fill all fields and choose a photo",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -62,3 +73,4 @@ class AddUser : AppCompatActivity() {
                 selectedImageUri != null
     }
 }
+

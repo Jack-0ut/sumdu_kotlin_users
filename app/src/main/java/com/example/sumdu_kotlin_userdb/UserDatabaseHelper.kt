@@ -5,10 +5,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.graphics.Bitmap
-import android.net.Uri
-import android.provider.MediaStore
-import java.io.ByteArrayOutputStream
 
 class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     private var onDatabaseChangeListener: OnDatabaseChangeListener? = null
@@ -50,21 +46,17 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
         onCreate(db)
     }
 
-    fun insertData(context: Context, firstName: String, lastName: String, phoneNumber: String, emailAddress: String,
-                   homeAddress: String, photoUri: Uri?): Long {
+    fun insertData(
+        context: Context, firstName: String, lastName: String, phoneNumber: String, emailAddress: String,
+        homeAddress: String, photo: ByteArray?
+    ): Long {
         val values = ContentValues()
         values.put(KEY_FIRST_NAME, firstName)
         values.put(KEY_LAST_NAME, lastName)
         values.put(KEY_PHONE_NUMBER, phoneNumber)
         values.put(KEY_EMAIL_ADDRESS, emailAddress)
         values.put(KEY_HOME_ADDRESS, homeAddress)
-
-        photoUri?.let {
-            val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, it)
-            val outputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream)
-            values.put(KEY_PHOTO, outputStream.toByteArray())
-        }
+        values.put(KEY_PHOTO, photo)
 
         val db = this.writableDatabase
         val result = db.insert(TABLE_NAME, null, values)
@@ -112,8 +104,7 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
                 val phoneNumber = cursor.getString(cursor.getColumnIndex(KEY_PHONE_NUMBER))
                 val emailAddress = cursor.getString(cursor.getColumnIndex(KEY_EMAIL_ADDRESS))
                 val homeAddress = cursor.getString(cursor.getColumnIndex(KEY_HOME_ADDRESS))
-                val photo = cursor.getBlob(cursor.getColumnIndex(KEY_PHOTO))
-                userList.add(User(id, firstName, lastName, phoneNumber, emailAddress, homeAddress, photo))
+                userList.add(User(id, firstName, lastName, phoneNumber, emailAddress, homeAddress))
             } while (cursor.moveToNext())
         }
         cursor.close()
