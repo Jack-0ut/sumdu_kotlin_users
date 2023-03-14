@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * This is adapter class that gets the data in form of the List<Users>
  * and transform that data in the user-friendly format to be shown to the User
  **/
-class UserListAdapter(private val userList: List<User>) : RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
+class UserListAdapter(private var userList: List<User>) : RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Get references to views in the layout
@@ -35,7 +35,10 @@ class UserListAdapter(private val userList: List<User>) : RecyclerView.Adapter<U
         holder.emailTextView.text = user.emailAddress
         holder.addressTextView.text = user.homeAddress
     }
-
+    fun updateData(newList: List<User>) {
+        userList = newList
+        notifyDataSetChanged()
+    }
     override fun getItemCount(): Int {
         return userList.size
     }

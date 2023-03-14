@@ -91,10 +91,15 @@ class UserDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
     }
 
     @SuppressLint("Range")
-    fun getAllUsers(): List<User> {
-
+    fun getAllUsers(sortByOption:String): List<User> {
+        val sortOrder = when (sortByOption) {
+            "First Name" -> KEY_FIRST_NAME
+            "Last Name" -> KEY_LAST_NAME
+            "Email" -> KEY_EMAIL_ADDRESS
+            else -> "ID"
+        }
         val userList = mutableListOf<User>()
-        val selectQuery = "SELECT * FROM $TABLE_NAME"
+        val selectQuery = "SELECT * FROM $TABLE_NAME ORDER BY $sortOrder"
         val db = this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         if (cursor.moveToFirst()) {
