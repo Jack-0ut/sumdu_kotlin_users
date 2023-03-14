@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Projects/Android/sumdu_kotlin_userdb/app/src/main/res/drawable/fragment_user_list.xml" value="0.133" />
+        <entry key="..\:/Projects/Android/sumdu_kotlin_userdb/app/src/main/res/layout/activity_add_user.xml" value="0.22826086956521738" />
+        <entry key="..\:/Projects/Android/sumdu_kotlin_userdb/app/src/main/res/layout/activity_edit_user.xml" value="0.264" />
+        <entry key="..\:/Projects/Android/sumdu_kotlin_userdb/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Projects/Android/sumdu_kotlin_userdb/app/src/main/res/layout/fragment_user_list.xml" value="0.22826086956521738" />
+        <entry key="..\:/Projects/Android/sumdu_kotlin_userdb/app/src/main/res/layout/list_item_user.xml" value="0.22826086956521738" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

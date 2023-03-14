@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<TextView
+    android:id="@+id/textViewIdLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="User ID:"
+    android:textSize="16sp"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:padding="10dp"/>
+
+<EditText
+    android:id="@+id/editTextId"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@id/textViewIdLabel"
+    android:layout_marginStart="0dp"
+    android:layout_marginEnd="10dp"
+    android:layout_toEndOf="@id/textViewIdLabel"
+    android:hint="Enter User ID"
+    android:inputType="number" />
+
+<Button
+    android:id="@+id/buttonEdit"
+    android:layout_width="74dp"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@id/editTextId"
+    android:layout_marginStart="10dp"
+    android:layout_toEndOf="@id/editTextId"
+    android:text="Edit" />
+
+<Button
+    android:id="@+id/buttonDelete"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@id/buttonEdit"
+    android:layout_marginStart="4dp"
+    android:layout_toEndOf="@id/buttonEdit"
+    android:text="Delete" />
+
+<Button
+    android:id="@+id/buttonAdd"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/textViewIdLabel"
+    android:layout_alignParentStart="true"
+    android:layout_marginStart="23dp"
+    android:layout_marginTop="71dp"
+    android:text="Add New User" />
+
+<Button
+    android:id="@+id/buttonClear"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/textViewIdLabel"
+    android:layout_marginStart="199dp"
+    android:layout_marginTop="72dp"
+    android:text="Clear" />
+
+<Button
+    android:id="@+id/buttonShowList"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Show List"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@+id/buttonClear"
+    android:layout_marginTop="20dp"/>
+
+<FrameLayout
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/buttonShowList"
+    android:layout_marginTop="20dp" />
+
+</RelativeLayout>
+
